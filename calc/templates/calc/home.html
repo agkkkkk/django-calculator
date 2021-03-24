@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="calculator">
+      <h1 id="heading">CALCULATOR</h1>
+      <form method="POST">
+        {% csrf_token %}
+        <input
+          type="number"
+          name="number_one"
+          class="numbers"
+          placeholder="Enter First Number"
+          required
+          autocomplete="off"
+        />
+        <label for="operator">Choose an operator!</label>
+        <select name="operator" id="option">
+          <option value="+">Addition</option>
+          <option value="-">Subtraction</option>
+          <option value="*">Multiplication</option>
+          <option value="/">Division</option>
+        </select>
+        <input
+          type="number"
+          name="number_two"
+          class="numbers"
+          placeholder="Enter Second Number"
+          required
+          autocomplete="off"
+        />
+        <input type="submit" id="button" value="Calculate" />
+      </form>
+      <div class="result">
+        <h1 id="question"></h1>
+        <h1 id="result">{{ result }}</h1>
+      </div>
+    </div>
+  </body>
+</html>
